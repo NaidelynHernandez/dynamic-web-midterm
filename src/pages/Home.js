@@ -1,14 +1,14 @@
-import React from 'react'; 
-import countries from "../components/countries";
-import flags from "../components/Flags"; 
-import Header from "../components/Header"; 
+import react from 'react'; 
+import countries from "../countries.js";
 
 
 function Home (){
 
     return (
         <div>
-            <h1> countries</h1>
+           <countries></countries> 
+
+            
         </div>
     )
 }

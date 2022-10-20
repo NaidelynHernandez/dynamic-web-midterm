@@ -1,4 +1,6 @@
-import React from 'react'; 
+import React, {useEffect, useState } from "react";
+import axios from "axios";
+
 
 function Countries() {
 const [countryName,setCountryName]= useState([]);
@@ -16,18 +18,23 @@ useEffect(() => {
         console.log("error", error);
         setCountryName([]);
     });
-), []); 
+}, []);
 
 
 
 return (
+    <div>
       {countryName.map((country,i)=> (
-            <home 
-            Name={i}
-            />
+           <Home 
+             list={Countries} 
+             key={i} 
+            
+            /> 
 
 
       ))}
+      </div>
 );
-      }
+
+}
 export default countries; 
