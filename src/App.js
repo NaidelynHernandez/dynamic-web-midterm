@@ -1,33 +1,28 @@
+import {
+  createBrowserRouter,
+  RouterProvider,
+ 
+} from "react-router-dom";
+
+
 import './App.css';
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import Home from "./pages/Home"; 
-
-
-
-
-
+import Home from "./pages/Home"; // IMPORTANT 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>,
+    element: <Home />,  // retrieving from home.js 
   },
-  {
-    path: "/Home/:id",
-    element: <Home/>,
-  }, 
 ]);
+
 
 
 function App() {
   return (
-     <div className="App">
-            <RouterProvider router={router} />
-
-     
-     </div>
+    <div className="App">
+       <RouterProvider router={router} />
+    </div>
   );
 }
 
-
-export default App;
+export default App;    //IMPORTANT 

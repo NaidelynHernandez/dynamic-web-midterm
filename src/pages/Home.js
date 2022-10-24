@@ -1,35 +1,37 @@
-import React, {useEffect, useState } from "react";
+import React, {useEffect,useState } from "react";
+
 import axios from "axios";
+const astroURL='https://restcountries.com/v3.1/all';
+
+function Home(){
+const [countryData,setData]= useState({});
 
 
-function Countries() {
-//const [countryName,setCountryName]= useState([]);
-const URL= "https://restcountries.com/v3.1/all";
-
-
-useEffect(() => {
+useEffect(()=> {
     axios
-    .get(URL)
-    .then ((response) => {
-        console.log({response});
-        //console.log("response", response);
+    .get(astroURL)
+    .then(function (response) {
+       console.log("response",response);
+        setData(response.name);
+        
+        })
+        .catch(function (error) {
+            console.warn(error);
+            setData({});
+        });
 
-       // setCountryName(response.data); 
-    })
-    .catch ((error) => {
-        console.log({error});
-       // console.log("error", error);
-        //setCountryName([]);
-    });
-}, []);
+},[]);
 
-//console.log('countryName', countryName);
-
+console.log("data",countryData);
 return (
-    <div>
-        <h1>Countries </h1>   
-      </div>
+    <div> 
+    <h1> countries</h1>
+    <h2>{countryData }</h2>
+    <p>{astroURL}</p>
+    </div>
 );
 
+
 }
-export default Countries; 
+export default Home;
+
