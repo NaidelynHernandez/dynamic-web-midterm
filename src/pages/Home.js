@@ -1,37 +1,60 @@
-import React, {useEffect,useState } from "react";
-
+import React, {useEffect,useMemo,useState } from "react";
+import Countries from "../components/Countries";
 import axios from "axios";
-const astroURL='https://restcountries.com/v3.1/all';
+
+
 
 function Home(){
-const [countryData,setData]= useState({});
+const [countryData,setData]= useState([]);
+
+const astroURL='https://restcountries.com/v3.1/all'
+const flagURL='https://countryflagsapi.com/png/'
 
 
 useEffect(()=> {
     axios
+   
     .get(astroURL)
-    .then(function (response) {
-       console.log("response",response);
-        setData(response.name);
+    .then((response)=> {
+       //console.log("response",response);
+        setData(response.data);
         
         })
-        .catch(function (error) {
+        .catch( (error)=>{
             console.warn(error);
-            setData({});
-        });
+            setData([]);
+        }); 
+
 
 },[]);
 
-console.log("data",countryData);
+console.log("hehedata",countryData);
+
+// const {altSpellings,
+//        flags,
+//        } = useMemo(() => {
+//     const countryinfo= countryData.altSpellings || [];
+    
+//     return {
+//         altSpellings: countryinfo.altSpellings && countryinfo.altSpellings[0],
+//    };
+
+// }, [countryData]);
+
+
 return (
     <div> 
-    <h1> countries</h1>
-    <h2>{countryData }</h2>
-    <p>{astroURL}</p>
+    <h1> Traveler's Guide</h1>
+    {countryData.map((country,i) => (
+       <Countries country={country} key={i}/> 
+      
+    ))}
     </div>
-);
+); 
 
 
 }
-export default Home;
 
+export default Home;
+    
+    

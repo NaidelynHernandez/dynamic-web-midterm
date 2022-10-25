@@ -1,3 +1,5 @@
 .App {
-  background-color: pink;
+  background-image: url('https://a.storyblok.com/f/112937/568x464/884e373bca/travel_pic_unsplash1-568x464.jpg/m/620x0/filters:quality(70)/');
+  text-align: center;
+  background-size: cover;
 }
