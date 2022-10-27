@@ -1,21 +1,24 @@
 
-import React, {useEffect,useState } from "react";
+import React, {useEffect,useMemo,useState } from "react";
 import Countries from "../components/Countries";
 import axios from "axios";
+import Bored from "../components/Bored";
 import Header from "../components/Header"
 
 function Home(){
 const [countryData,setData]= useState([]);
-//const [searchText, setSearchText ]= useState("");
 const astroURL='https://restcountries.com/v3.1/all'
-//const flagURL='https://countryflagsapi.com/png/'
 const [searchText, setSearchText ]= useState("");
+
+const boredURL="https://www.boredapi.com/api/activity/"
+const [boredData,setbored]= useState({});
 
 
 useEffect(()=> {
     axios
-   
+    
     .get(astroURL)
+   // .get(boredURL)
     .then((response)=> {
        //console.log("response",response);
         setData(response.data);
@@ -27,9 +30,40 @@ useEffect(()=> {
         }); 
 
 
+
+     axios
+     .get(boredURL)
+     .then(function (response) {
+            setbored(response.data);
+
+
+     }).catch(function(error){
+        console.warn(error);
+      setbored({});
+    });
+
 },[]);
 
+console.log("heheheheactivities",boredData);
 console.log("hehedata",countryData);
+
+const{
+    activity,
+    type,
+}= useMemo(() => {
+
+const activity1= boredData.data || {};
+return{
+    activity: activity1.activity, 
+    type: activity1.type,
+
+};
+
+},[boredData]);
+
+
+
+
 
 
 async function searchCountry() {
@@ -51,8 +85,16 @@ async function searchCountry() {
   }
 
 
-return (
-    <div> 
+  return (
+    <section>
+
+        <Bored
+     activity={activity}
+     type={type}
+     
+     
+     />
+ 
         <section>
     <form 
         onSubmit= {handleSearchCountry}
@@ -69,28 +111,15 @@ return (
         />
 
     </form>
+
             </section>
     <h1> Traveler's Guide</h1>
     {countryData.map((country,i) => (
        <Countries country={country} key={i}/> 
       
     ))}
-   
-
-    
-
-</div>
-
-
-
-
+     </section>
 ); 
-
-
 }
 
-export default Home;
-    
-    
-
-  
+export default Home; 
