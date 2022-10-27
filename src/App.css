@@ -3,3 +3,17 @@
   text-align: center;
   background-size: cover;
 }
+
+
+.nav{
+
+align-items: center;
+
+
+}
+.nav .form-control input{
+  background-color: transparent;
+  width:200px;
+  height: 50px;
+  
+}
