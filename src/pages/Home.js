@@ -1,4 +1,3 @@
-
 import React, {useEffect,useMemo,useState } from "react";
 import Countries from "../components/Countries";
 import axios from "axios";
@@ -13,35 +12,15 @@ const [searchText, setSearchText ]= useState("");
 const boredURL="https://www.boredapi.com/api/activity/"
 const [boredData,setbored]= useState({});
 
-
 useEffect(()=> {
-    axios
-    
-    .get(astroURL)
-   // .get(boredURL)
-    .then((response)=> {
-       //console.log("response",response);
-        setData(response.data);
-        
-        })
-        .catch( (error)=>{
-            console.warn(error);
-            setData([]);
-        }); 
-
-
-
      axios
      .get(boredURL)
      .then(function (response) {
             setbored(response.data);
-
-
      }).catch(function(error){
         console.warn(error);
       setbored({});
     });
-
 },[]);
 
 console.log("heheheheactivities",boredData);
@@ -52,7 +31,7 @@ const{
     type,
 }= useMemo(() => {
 
-const activity1= boredData.data || {};
+const activity1= boredData || {};
 return{
     activity: activity1.activity, 
     type: activity1.type,
@@ -60,11 +39,6 @@ return{
 };
 
 },[boredData]);
-
-
-
-
-
 
 async function searchCountry() {
     try {
@@ -78,47 +52,41 @@ async function searchCountry() {
     }
   }
 
-
   function handleSearchCountry(e) {
     e.preventDefault();
     searchCountry();
   }
 
-
   return (
-    <section>
-
-        <Bored
-     activity={activity}
-     type={type}
-     
-     
-     />
- 
-        <section>
-    <form 
-        onSubmit= {handleSearchCountry}
-        >
+    <section> 
+      <form 
+        className="nav"
+        onSubmit= {handleSearchCountry} >
             <input 
-                
-
             type="text"
             name="search"
             value={searchText}
             placeholder="Input country "
             onChange={(e) => setSearchText(e.target.value)}
-
         />
+      </form>
+    
+    <section>
 
-    </form>
-
-            </section>
-    <h1> Traveler's Guide</h1>
+    <h1 class="title"> Traveler's Guide</h1>
     {countryData.map((country,i) => (
        <Countries country={country} key={i}/> 
       
     ))}
      </section>
+    
+   <section> 
+     <Bored
+     activity={activity}
+     type={type}
+     />
+   </section>
+   </section>
 ); 
 }
 

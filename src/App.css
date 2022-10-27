@@ -1,7 +1,8 @@
 .App {
-  background-image: url('https://a.storyblok.com/f/112937/568x464/884e373bca/travel_pic_unsplash1-568x464.jpg/m/620x0/filters:quality(70)/');
+  background-image: url('https://cdn.mos.cms.futurecdn.net/Qg3tz2LmksyVYNfn7nByhg.jpg');
   text-align: center;
-  background-size: cover;
+   ;
+  color: white;
 }
 
 
@@ -16,4 +17,14 @@ align-items: center;
   width:200px;
   height: 50px;
   
+}
+
+.img{
+
+  width:300px;
+  height: 300px;
+}
+
+.title{
+ font-size: 70px;
 }
