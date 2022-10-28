@@ -6,9 +6,9 @@ type,
 }) {
     return(  
     <div className="Bored">
-    <h1>activity: {activity} </h1>
-        <h2>type: {type}</h2>
-        </div>
+        <h1>Here's an activity you can try: {activity} </h1>
+        <p>Type: {type}</p>
+    </div>
     )
 }
 export default Bored;

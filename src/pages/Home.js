@@ -2,7 +2,6 @@ import React, {useEffect,useMemo,useState } from "react";
 import Countries from "../components/Countries";
 import axios from "axios";
 import Bored from "../components/Bored";
-import Header from "../components/Header"
 
 function Home(){
 const [countryData,setData]= useState([]);
@@ -35,7 +34,6 @@ const activity1= boredData || {};
 return{
     activity: activity1.activity, 
     type: activity1.type,
-
 };
 
 },[boredData]);
@@ -66,7 +64,7 @@ async function searchCountry() {
             type="text"
             name="search"
             value={searchText}
-            placeholder="Input country "
+            placeholder="Insert the Country you want to visit :)))" 
             onChange={(e) => setSearchText(e.target.value)}
         />
       </form>

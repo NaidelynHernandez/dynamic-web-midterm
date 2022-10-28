@@ -1,30 +1,35 @@
 .App {
-  background-image: url('https://cdn.mos.cms.futurecdn.net/Qg3tz2LmksyVYNfn7nByhg.jpg');
-  text-align: center;
-   ;
   color: white;
+  text-align: center;
 }
 
+body {
+  background-image: url("https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2021/05/travel-photography-tips-10.jpg?resize=1500%2C996&ssl=1");
+  margin:0;
+  padding:0;
+}
+
+.f{
+  width: 200px;
+}
+
+input{
+  border: #9a8c98 solid 2px;
+  border-radius: 15px;
+  height: 30px;
+  width: 250px;
+}
+ img{
+  width: 100%;
+ }
 
 .nav{
-
-align-items: center;
-
-
-}
-.nav .form-control input{
-  background-color: transparent;
-  width:200px;
-  height: 50px;
-  
-}
-
-.img{
-
-  width:300px;
-  height: 300px;
+background-color: #b7b7a4;
+padding: 40px;
 }
 
 .title{
  font-size: 70px;
 }
+
+
