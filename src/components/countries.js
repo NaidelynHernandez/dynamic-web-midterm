@@ -6,7 +6,6 @@ function Countries({country}){
         <p>{country.flag} </p>
         <p> Capital: {country.capital}</p>
         <p> Capital Info: {country.capitalInfo.latlng}</p>
-
         <p> Population: {country.population}</p>
         <p>Continent: {country.continents}</p>
         <p>Sub Region: {country.subregion}</p>

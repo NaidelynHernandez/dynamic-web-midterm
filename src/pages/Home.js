@@ -6,7 +6,7 @@ import Bored from "../components/Bored";
 function Home(){
 const [countryData,setData]= useState([]);
 const astroURL='https://restcountries.com/v3.1/all'
-const [searchText, setSearchText ]= useState("");
+const [searchQuery, setSearchQuery ]= useState("");
 
 const boredURL="https://www.boredapi.com/api/activity/"
 const [boredData,setbored]= useState({});
@@ -15,15 +15,12 @@ useEffect(()=> {
      axios
      .get(boredURL)
      .then(function (response) {
-            setbored(response.data);
+        setbored(response.data);
      }).catch(function(error){
         console.warn(error);
       setbored({});
     });
 },[]);
-
-console.log("heheheheactivities",boredData);
-console.log("hehedata",countryData);
 
 const{
     activity,
@@ -38,10 +35,10 @@ return{
 
 },[boredData]);
 
-async function searchCountry() {
+async function searchInput() {
     try {
       const res = await fetch(
-        `https://restcountries.com/v3.1/name/${searchText}`
+        `https://restcountries.com/v3.1/name/${searchQuery}`
       );
       const data = await res.json();
       setData(data);
@@ -50,22 +47,22 @@ async function searchCountry() {
     }
   }
 
-  function handleSearchCountry(e) {
+  function Searching(e) {
     e.preventDefault();
-    searchCountry();
+    searchInput();
   }
 
   return (
     <section> 
       <form 
         className="nav"
-        onSubmit= {handleSearchCountry} >
+        onSubmit= {Searching} >
             <input 
             type="text"
             name="search"
-            value={searchText}
+            value={searchQuery}
             placeholder="Insert the Country you want to visit :)))" 
-            onChange={(e) => setSearchText(e.target.value)}
+            onChange={(e) => setSearchQuery(e.target.value)}
         />
       </form>
     
